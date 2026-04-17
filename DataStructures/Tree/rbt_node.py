@@ -85,3 +85,19 @@ def change_color(my_node, color):
         Exception
     """
     my_node["color"] = color
+
+def default_compare():
+    pass
+
+def rotate_left():
+    pass
+
+def rotate_right():
+    pass
+
+def flip_colors():
+    pass
+
+def flip_node_color():
+    pass
+
