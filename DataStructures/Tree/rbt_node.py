@@ -1,6 +1,7 @@
 RED = 0
 BLACK = 1
 
+from . import bst_node as bst
 
 def new_node(key, value, color=RED):
     """
@@ -86,14 +87,40 @@ def change_color(my_node, color):
     """
     my_node["color"] = color
 
-def default_compare():
-    pass
+def default_compare(key1, key2):
+    if key1 < key2:
+        return -1
+    if key1 > key2:
+        return 1
+    return 0
 
-def rotate_left():
-    pass
+def rotate_left(nodo):
+    hijo = nodo['right']
+    
+    nodo['right'] = hijo['left']
+    hijo['left'] = nodo
+    
+    hijo['color'] = nodo['color']
+    nodo['color'] = RED
+    
+    hijo['size'] = nodo['size']
+    nodo['size'] = 1 + bst.size_tree(nodo['left']) + bst.size_tree(nodo['right'])
+    
+    return hijo
 
-def rotate_right():
-    pass
+def rotate_right(nodo):
+    hijo = nodo['left']
+    
+    nodo['left'] = hijo['right']
+    hijo['right'] = nodo
+    
+    hijo['color'] = nodo['color']
+    nodo['color'] = RED
+    
+    hijo['size'] = nodo['size']
+    nodo['size'] = 1 + bst.size_tree(nodo['left']) + bst.size_tree(nodo['right'])
+    
+    return hijo
 
 def flip_colors():
     pass
