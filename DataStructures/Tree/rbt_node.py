@@ -140,7 +140,29 @@ def flip_node_color(rbt_node):
         rbt_node['color'] = 'RED'
     return rbt_node
 
-def insert_node(root, key, val):
+def insert_node(root, key, value):
+    if root is None:
+        return new_node(key, value, RED)
+    
+    if key < root['key']:
+        root['left'] = insert_node(root['left'], key, value)
+        
+    elif key > root['key']:
+        root['right'] = insert_node(root['right'], key, value)
+        
+    else:
+        root['value'] = value
+        
+    if is_red(root['right']) and not is_red(root['left']):
+        root = rotate_left(root)
+    
+    if is_red(root['left']) and is_red(root['left']['left']):
+        root = rotate_right(root)
+        
+    if is_red(root['left']) and is_red(root['right']):
+        flip_colors(root)
+    
+    root['size'] = 1 + bst.size_tree(root['left']) + bst.size_tree(root['right'])
     
     return root
 
