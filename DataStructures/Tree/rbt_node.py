@@ -95,9 +95,25 @@ def rotate_left():
 def rotate_right():
     pass
 
-def flip_colors():
-    pass
+def flip_colors(rbt_node):
+    change = [rbt_node['color'], rbt_node['left']['color'], rbt_node['right']['color']]
+    for i in len(change):
+        
+        if change[i] == 'RED':
+            change[i] = 'BLACK'
+        else:
+            change[i] = 'RED'
+            
+    return rbt_node
 
-def flip_node_color():
-    pass
+def flip_node_color(rbt_node):
+    if rbt_node['color'] == 'RED':
+        rbt_node['color'] = 'BLACK'
+    else:
+        rbt_node['color'] = 'RED'
+    return rbt_node
+
+def insert_node(root, key, val):
+    
+    return root
 
